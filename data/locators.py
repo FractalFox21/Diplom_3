@@ -63,5 +63,7 @@ class LocatorsProfileOrder:
     ALL_TIME_ORDERS = (By.XPATH, '//*[contains(text(),"Выполнено за все время")]/..//*[contains(@class,"rderFeed_number__")]')
     #количество выполненных за сегодня заказов
     TODAY_ORDERS = (By.XPATH, '//*[contains(text(),"Выполнено за сегодня")]/..//*[contains(@class,"rderFeed_number__")]')
+    #номера всех заказов в ленте
+    ORDER_LIST = (By.XPATH, '//*[contains(@class, "text text_type_main-medium")]/../..//*[contains(@class, "OrderHistory_textBox__3lgbs")]')
     #номера всех заказов в работе
     ORDERS_IN_WORK = (By.XPATH, "//*[text() = 'В работе:']/following::li[@class][6]")
