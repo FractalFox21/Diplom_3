@@ -10,21 +10,9 @@ class LocatorsForgotPage:
     RECOVER_BUTTON = (By.XPATH, ".//button[text()='Восстановить']")
 
 class LocatorsPassRecovery:
-
-    PASS_INPUT_FIELD = (By.XPATH, "//input[@name='password']")
-    SHOW_HIDE_BUTTON = (By.XPATH, "//span[@class='PasswordInput__icon']")
-    EXPECTED_ACTIVE_CLASS = 'text-input_active'
-
-
-
-    #страница pass recovery
-    ##PASS_FIELD = (By.XPATH, "//input[@name='password']")
-    #PASS_INPUT = (By.XPATH, "//input[@name='Введите новый пароль']")
-    #SHOW_HIDE_BUTTON = (By.CSS_SELECTOR, "svg.icon.icon_type_eye")
-    # PASS_INPUT_FIELD = (By.XPATH, "//label[contains(text(), 'Пароль')]")
-    # PASSWORD_INPUT = By.XPATH, './/input[@name="Введите новый пароль"]'
-
-
+    # страница pass recovery
+    FIELD_PASS = (By.XPATH, '//*[contains(text(),"Пароль")]/parent::*/input')
+    SHOW_HIDE_BUTTON = (By.CLASS_NAME, 'input__icon-action')
 
 
 

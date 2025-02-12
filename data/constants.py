@@ -4,4 +4,4 @@ EMAIL = 'kravchenko_16@gmail.com'   #Email для авторизованного
 PASSWORD = 'Mesto2101'    # Пароль для авторизованного теста страницё
 
 #ожидаемый класс для проверки активности
-EXPECTED_INPUT_CLASS = 'input_placeholder-focused'
+EXPECTED_TYPE = "text"

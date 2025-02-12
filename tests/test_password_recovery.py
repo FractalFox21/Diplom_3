@@ -1,5 +1,5 @@
 import allure
-from data.constants import EMAIL
+from data.constants import EMAIL, EXPECTED_TYPE
 from pages.forgot_pass_page import ForgotPassPage
 from pages.login_page import LoginPage
 from data.URLS import URL_LOGIN, URL_FORGOT_PASS, URL_RESET_PASS
@@ -34,8 +34,6 @@ class TestPassRecovery:
         forgot_pass.enter_email(EMAIL)
         forgot_pass.click_recover_button()
         forgot_pass.wait_for_url(URL_RESET_PASS)
-        focus = pass_rec.password_field_focus_status()
-        assert focus == False, "Поле в фокусе."
-        pass_rec.click_show_hide_password_button()
-        focus = pass_rec.password_field_focus_status()
-        assert focus == True, "Поле пароля не стало активным после клика."
+        pass_rec.click_show_hide_pass_button()
+        focus = pass_rec.get_focus_status_field_pass()
+        assert focus == EXPECTED_TYPE
