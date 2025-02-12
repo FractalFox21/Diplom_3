@@ -1,29 +1,57 @@
 from selenium.webdriver.common.by import By
 
-class LocatorsHomePage:
-    #домашняя страница
+class LocatorsBasePage:
+    #кнопка 'личного кабинета'
     PER_OFFICE = (By.XPATH, ".//p[text()='Личный Кабинет']")  # кнопка личного кабинета
+    #кнопка 'лента заказов'
+    ORDER_LIST = (By.XPATH, '//*[contains(text(),"Лента Заказов")]')
+    #кнопка 'конструктор'
+    CONSTR = (By.XPATH, ".// p[contains(text(), 'Конструктор')]")
+
+class LocatorsHomePage:
+    #найти кнопку булки
+    BUN = (By.XPATH, "//*[contains(@alt,'Краторная булка N-200i')]")
+    #найти всплывающее окно
+    POP_UP_BUN = (By.XPATH, "//h2[text()='Детали ингредиента']")
+    #найти кнопку закрытия у всплывающего окна
+    EXIT_WINDOW = (By.XPATH, "//*[contains(@class,'Modal_modal__close_modified__3V5XS')]")
+    #счётчик ингредиентов
+    COUNTER_INGREDIENT = (By.XPATH, '//*[contains(@class,"BurgerIngredient_ingredient__")]//*[contains(@class,"counter_default__")]')
+    #место корзины
+    PLACE = (By.XPATH, "//span[@class='constructor-element__text' and text()='Перетяните булочку сюда (верх)']")
+    #кнопка оформить заказ
+    BUTTON_PLACE_ORDER = (By.XPATH, '//button[contains(text(),"Оформить заказ")]')
+    #статус каунтера
+    CAUNTER_STATUS = (By.XPATH, "//*[contains(@alt, 'Краторная булка N-200i')]/..//*[contains(@class, 'counter_counter__ZNLkj')]")
+    # идентификатор заказа для проверки оформления
+    ORDER_STATUS = (By.XPATH, '//*[contains(text(),"идентификатор заказа")]')
 
 class LocatorsLoginPage:
-    #страница login page
+    #кнопка восстановить пароль
     RECOVER_PASS_BUTTON = (By.XPATH, "//a[contains(text(), 'Восстановить пароль')]")
+    #поле воода email
     FILED_EMAIL = (By.XPATH, '//*[contains(text(),"Email")]/parent::*/input')
+    #поле воода пароля
     FILED_PASSWORD = (By.XPATH, '//*[contains(text(),"Пароль")]/parent::*/input')
+    #кнопка войти
     BUTTON_LOGIN = (By.XPATH, '//button[contains(text(),"Войти")]')
 
 class LocatorsForgotPage:
-    #страница forgot pass
-    EMAIL_INPUT = (By.XPATH, "//label[contains(text(), 'Email')]/following-sibling::input")
+    #поле воода email
+    FILED_EMAIL = (By.XPATH, "//label[contains(text(), 'Email')]/following-sibling::input")
+    # кнопка восстановить
     RECOVER_BUTTON = (By.XPATH, ".//button[text()='Восстановить']")
 
 class LocatorsPassRecovery:
-    # страница pass recovery
+    #поле воода пароля
     FIELD_PASS = (By.XPATH, '//*[contains(text(),"Пароль")]/parent::*/input')
+    #иконка показать/скрыть пароль
     SHOW_HIDE_BUTTON = (By.CLASS_NAME, 'input__icon-action')
 
 class LocatorsProfile:
-    # страница profile
-    ORDER_HISTORY_BUTTON = (By.XPATH, '//a[@href="/account/order-history"]')
+    #кнопка истории заказов
+    ORDER_HISTORY_BUTTON = (By.XPATH, "//*[contains(@class,'Account_link__2ETsJ text text_type_main-medium') and text() = 'История заказов']")
+    #кнопка выхода
     LOGOUT = (By.XPATH, ".//button[contains(text(),'Выход')]")
 
 class LocatorsProfileOrder:
@@ -35,53 +63,5 @@ class LocatorsProfileOrder:
     ALL_TIME_ORDERS = (By.XPATH, '//*[contains(text(),"Выполнено за все время")]/..//*[contains(@class,"rderFeed_number__")]')
     #количество выполненных за сегодня заказов
     TODAY_ORDERS = (By.XPATH, '//*[contains(text(),"Выполнено за сегодня")]/..//*[contains(@class,"rderFeed_number__")]')
-    #кнопка 'лента заказов'
-    ORDER_LIST = (By.XPATH, '//*[contains(text(),"Лента Заказов")]')
-    #номера всех заказов в ленте
-    ORDERS_IN_LIST = (By.XPATH, '//*[contains(@class, "text text_type_main-medium")]/../..//*[contains(@class, "OrderHistory_textBox__3lgbs")]')
     #номера всех заказов в работе
     ORDERS_IN_WORK = (By.XPATH, "//*[text() = 'В работе:']/following::li[@class][6]")
-
-
-
-
-
-
-
-
-
-
-
-class Locators:
-    #локаторы из спринта
-    #домашняя страница
-    LOGO = (By.CSS_SELECTOR, ".AppHeader_header__logo__2D0X2")  #логотип сайта
-    PER_OFFICE = (By.XPATH, ".//p[text()='Личный Кабинет']") #кнопка личного кабинета
-    HOME_LOGIN_BUTTON = (By.XPATH, "//button[text()='Войти в аккаунт']")  # Кнопка "Войти в аккаунт" на главной странице
-    CONSTR = (By.XPATH, ".// p[contains(text(), 'Конструктор')]")  # кнопка конструктор
-
-    #регистрация
-    REG_BUTTON = (By.XPATH, './/a[text()="Зарегистрироваться"]')    #кнопка перехода к странице регистрации
-    REG_NAME = (By.XPATH, "//label[text()='Имя']/following-sibling::input")    #Поле ввода имени при регистрации
-    REG_EMAIL = (By.XPATH, "//label[text()='Email']/following-sibling::input")  #Поле ввода Email при регистрации
-    REG_PASSWORD = (By.XPATH, "//label[text()='Пароль']/following-sibling::input")  #Поле ввода пароля при регистрации
-    FIN_REG = (By.XPATH, "//button[text()='Зарегистрироваться']") #Кнопка отправки заявки на регистрацию
-    REG_ERROR = (By.XPATH, "//p[contains(text(),'Некорректный пароль')]")  # Ошибка некорректного пароля
-    ALREADY_REG_INPUT = (By.XPATH, ".//a[contains(text(),'Войти')]") #кнопка "войти" на странице регистрации
-
-    #авторизация
-    LOGIN = (By.XPATH, "//label[text()='Email']/following-sibling::input")  #Поле ввода email
-    PASSWORD = (By.XPATH, "//label[text()='Пароль']/following-sibling::input")   #Поле ввода пароля
-    INPUT = (By.XPATH, "//button[contains(text(),'Войти')]")     #Кнопка входа на странице логин
-    ORDER = (By.XPATH, ".//button[contains(text(), 'Оформить заказ')]") #Кнопка "оформить заказ" для проверки авторизации
-    LOGOUT = (By.XPATH, ".//button[contains(text(),'Выход')]") #Кнопка "выход" из личного кабинета
-    RESET_PASS =  (By.XPATH, './/a[text()="Восстановить пароль"]') #кнопка "восстановить пароль" на странице логина
-    REMEMBERED_INPUT = (By.XPATH, './/a[text()="Войти"]') #кнопка "войти" на странице восстановления пароля
-
-    #для конструктора
-    TOPPINGS = (By.XPATH, ".//span[contains(text(),'Начинки')]")  #пункт меню - начинки
-    TEG_TOPPINGS = (By.XPATH, ".//h2[contains(text(),'Начинки')]")  #Раздел меню - начинки
-    BUNS = (By.XPATH, ".//span[contains(text(),'Булки')]")      #пункт меню - булки
-    TEG_BUNS = (By.XPATH, ".//h2[contains(text(),'Булки')]")    #Раздел меню - булки
-    SOUSES = (By.XPATH, ".//span[contains(text(),'Соусы')]")        #пункт меню - соусы
-    TEG_SOUSES = (By.XPATH, ".//h2[contains(text(),'Соусы')]")      #Раздел меню - соусы

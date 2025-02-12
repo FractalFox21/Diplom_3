@@ -1,7 +1,7 @@
 import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from data.locators import LocatorsProfile, LocatorsProfileOrder
+from data.locators import LocatorsProfile, LocatorsProfileOrder, LocatorsBasePage
 from pages.profile_page import ProfilePage
 
 
@@ -14,8 +14,8 @@ class OrderHistoryPage(ProfilePage):
 
     @allure.step("Нажать на кнопку 'лента заказов'")
     def click_order_list_button(self):
-        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(LocatorsProfileOrder.ORDER_LIST))
-        return self.find_element_located(LocatorsProfileOrder.ORDER_LIST).click()
+        WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(LocatorsBasePage.ORDER_LIST))
+        return self.find_element_located(LocatorsBasePage.ORDER_LIST).click()
 
     @allure.step("Нажать на заказ в списке заказов")
     def click_order(self):
@@ -37,7 +37,7 @@ class OrderHistoryPage(ProfilePage):
 
     @allure.step("Проверить наличие последнего заказа из 'истории заказов' в 'Ленте заказов'")
     def check_last_order(self, control_order):
-        numbers = self.find_all_elements(LocatorsProfileOrder.ORDERS_IN_LIST)
+        numbers = self.find_all_elements(LocatorsProfileOrder.ORDER_LIST)
         for number in numbers:
             if control_order == number.text:
                 return True

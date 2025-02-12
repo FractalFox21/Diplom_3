@@ -10,9 +10,14 @@ from data.queries import Queries
 from pages.login_page import LoginPage
 
 
-@pytest.fixture
-def driver():
-    browser = webdriver.Chrome()
+@pytest.fixture(params=['firefox','chrome'])
+def driver(request):
+    if request.param == 'firefox':
+        browser = webdriver.Firefox()
+    elif request.param == 'chrome':
+        browser = webdriver.Chrome()
+    else:
+        raise ValueError ('Unknown browser')
     yield browser
     browser.quit()
 
@@ -34,25 +39,3 @@ def create_and_delete_user():
     token = response.json()['accessToken']
     yield user , token , response
     requests.delete(f'{URL_HOME_PAGE}{URL_USER}', headers={'Authorization': f'{token}'})
-
-
-
-
-'''
-
-@pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
-
-
-@pytest.fixture(params=['firefox','chrome'])
-def driver(request):
-    if request.param == 'firefox':
-        browser = webdriver.Firefox()
-    elif request.param == 'chrome':
-        browser = webdriver.Chrome()
-    else:
-        raise ValueError ('Unknown browser')
-
-    yield browser
-    browser.quit()
-    
-'''

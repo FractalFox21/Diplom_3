@@ -1,4 +1,6 @@
 import allure
+import pytest
+
 from data.constants import TEST_EMAIL, EXPECTED_TYPE
 from pages.forgot_pass_page import ForgotPassPage
 from pages.login_page import LoginPage
@@ -8,6 +10,7 @@ from pages.pass_recovery_page import PassRecoveryPage
 
 class TestPassRecovery:
 
+    @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('Тест перехода на страницу "забыл пароль" по кнопке «Восстановить пароль».')
     def test_forgot_pass_click_recovery_button_url_forgot_pass(self, driver):
         forgot_pass = LoginPage(driver)
@@ -16,6 +19,7 @@ class TestPassRecovery:
         current_url = forgot_pass.current_url()
         assert URL_FORGOT_PASS in current_url, "Переход на страницу 'забыл пароль' не выполнен"
 
+    @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('Тест ввода почты и клик по кнопке «Восстановить», откроется страница восстановления.')
     def test_enter_mail_click_restore_button_url_recovery_pass(self, driver):
         forgot_pass = ForgotPassPage(driver)
@@ -26,6 +30,7 @@ class TestPassRecovery:
         current_url = forgot_pass.current_url()
         assert URL_RESET_PASS in current_url, "Переход на страницу восстановления не выполнен"
 
+    @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('На странице восстановления пароля клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его.')
     def test_click_show_hide_pass_active_field(self, driver):
         forgot_pass = ForgotPassPage(driver)

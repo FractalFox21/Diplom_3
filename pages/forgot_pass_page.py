@@ -9,7 +9,7 @@ class ForgotPassPage(BasePage):
 
     @allure.step("Ввести email")
     def enter_email(self, email):
-        return self.driver.find_element(*LocatorsForgotPage.EMAIL_INPUT).send_keys(email)
+        return self.driver.find_element(*LocatorsForgotPage.FILED_EMAIL).send_keys(email)
 
     @allure.step("Нажать на кнопку 'Восстановить'")
     def click_recover_button(self):
