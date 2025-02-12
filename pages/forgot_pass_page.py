@@ -20,5 +20,5 @@ class ForgotPassPage(BasePage):
 
     @allure.step("Проверить фокус поля 'пароль'.")
     def get_focus_status_field_pass(self):
-        fokus_type = self.get_type(LocatorsPassRecovery.FIELD_PASS)
-        return fokus_type
+        focus_type = self.get_type(LocatorsPassRecovery.FIELD_PASS)
+        return focus_type

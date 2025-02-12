@@ -1,7 +1,7 @@
 
-NAME = 'test'   #тестовое имя для регистрации
-EMAIL = 'kravchenko_16@gmail.com'   #Email для авторизованного теста страниц
-PASSWORD = 'Mesto2101'    # Пароль для авторизованного теста страницё
+TEST_NAME = 'test'   #тестовое имя для регистрации
+TEST_EMAIL = 'kravchenko_16@gmail.com'   #Email для авторизованного теста страниц
+TEST_PASSWORD = 'Mesto2101'    # Пароль для авторизованного теста страницё
 
 #ожидаемый класс для проверки активности
 EXPECTED_TYPE = "text"

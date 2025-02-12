@@ -1,8 +1,15 @@
 from selenium.webdriver.common.by import By
 
+class LocatorsHomePage:
+    #домашняя страница
+    PER_OFFICE = (By.XPATH, ".//p[text()='Личный Кабинет']")  # кнопка личного кабинета
+
 class LocatorsLoginPage:
     #страница login page
     RECOVER_PASS_BUTTON = (By.XPATH, "//a[contains(text(), 'Восстановить пароль')]")
+    FILED_EMAIL = (By.XPATH, '//*[contains(text(),"Email")]/parent::*/input')
+    FILED_PASSWORD = (By.XPATH, '//*[contains(text(),"Пароль")]/parent::*/input')
+    BUTTON_LOGIN = (By.XPATH, '//button[contains(text(),"Войти")]')
 
 class LocatorsForgotPage:
     #страница forgot pass
@@ -14,6 +21,10 @@ class LocatorsPassRecovery:
     FIELD_PASS = (By.XPATH, '//*[contains(text(),"Пароль")]/parent::*/input')
     SHOW_HIDE_BUTTON = (By.CLASS_NAME, 'input__icon-action')
 
+class LocatorsProfile:
+    # страница profile
+    ORDER_HISTORY_BUTTON = (By.XPATH, '//a[@href="/account/order-history"]')
+    LOGOUT = (By.XPATH, ".//button[contains(text(),'Выход')]")
 
 
 
@@ -25,6 +36,7 @@ class LocatorsPassRecovery:
 
 
 
+class Locators:
     #локаторы из спринта
     #домашняя страница
     LOGO = (By.CSS_SELECTOR, ".AppHeader_header__logo__2D0X2")  #логотип сайта

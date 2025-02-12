@@ -1,5 +1,5 @@
 import allure
-from data.constants import EMAIL, EXPECTED_TYPE
+from data.constants import TEST_EMAIL, EXPECTED_TYPE
 from pages.forgot_pass_page import ForgotPassPage
 from pages.login_page import LoginPage
 from data.URLS import URL_LOGIN, URL_FORGOT_PASS, URL_RESET_PASS
@@ -20,7 +20,7 @@ class TestPassRecovery:
     def test_enter_mail_click_restore_button_url_recovery_pass(self, driver):
         forgot_pass = ForgotPassPage(driver)
         forgot_pass.go_to_site(URL_FORGOT_PASS)
-        forgot_pass.enter_email(EMAIL)
+        forgot_pass.enter_email(TEST_EMAIL)
         forgot_pass.click_recover_button()
         forgot_pass.wait_for_url(URL_RESET_PASS)
         current_url = forgot_pass.current_url()
@@ -31,7 +31,7 @@ class TestPassRecovery:
         forgot_pass = ForgotPassPage(driver)
         pass_rec = PassRecoveryPage(driver)
         forgot_pass.go_to_site(URL_FORGOT_PASS)
-        forgot_pass.enter_email(EMAIL)
+        forgot_pass.enter_email(TEST_EMAIL)
         forgot_pass.click_recover_button()
         forgot_pass.wait_for_url(URL_RESET_PASS)
         pass_rec.click_show_hide_pass_button()
