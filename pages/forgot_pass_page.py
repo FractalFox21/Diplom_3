@@ -1,7 +1,6 @@
 import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from data.locators import LocatorsForgotPage, LocatorsPassRecovery
 from pages.base_page import BasePage
 
@@ -11,7 +10,6 @@ class ForgotPassPage(BasePage):
     @allure.step("Ввести email")
     def enter_email(self, email):
         return self.driver.find_element(*LocatorsForgotPage.EMAIL_INPUT).send_keys(email)
-
 
     @allure.step("Нажать на кнопку 'Восстановить'")
     def click_recover_button(self):

@@ -25,27 +25,25 @@ class BasePage:
         WebDriverWait(self.driver, 10).until(EC.presence_of_element_located(locator))
         return self.driver.find_element(*locator)
 
+    @allure.step('Подождать загрузку всех искомых элементов.')
+    def find_all_elements(self, locator):
+        WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located(locator))
+        return self.driver.find_elements(*locator)
+
     @allure.step('Получить текущий url')
     def current_url(self):
         return self.driver.current_url
 
     @allure.step('Подождать загрузку страницы')
-    def wait_for_url(self, expected_url, timeout=10):
-        WebDriverWait(self.driver, timeout).until(EC.url_to_be(expected_url))
+    def wait_for_url(self, expected_url):
+        WebDriverWait(self.driver, 10).until(EC.url_to_be(expected_url))
 
     @allure.step('Получить тип элемента.')
     def get_type(self, locator):
         type_el = self.find_element_located(locator).get_attribute("type")
         return type_el
 
-
-    #@allure.step('Переключиться на открывшуюся страницу')
-    #def switch_window(self, window_number: int=1):
-     #   return self.driver.switch_to.window(self.driver.window_handles[window_number])
-
-'''
-    def find_elements(self, locator):
-        return WebDriverWait(self.driver, 10).until(EC.presence_of_all_elements_located(locator),
-                message=f"Элементы {locator} не найдены")
-    
-'''
+    @allure.step('Получить текст элемента.')
+    def get_text(self, locator):
+        text = self.find_clickable_element(locator).text
+        return text

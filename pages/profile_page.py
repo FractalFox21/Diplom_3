@@ -9,7 +9,7 @@ from pages.home_page import HomePage
 class ProfilePage(HomePage):
 
     @allure.step("Нажать на кнопку 'Итория заказов'")
-    def click_order_history_button(self):
+    def click_on_order(self):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(LocatorsProfile.ORDER_HISTORY_BUTTON))
         return self.find_element_located(LocatorsProfile.ORDER_HISTORY_BUTTON).click()
 
@@ -17,4 +17,5 @@ class ProfilePage(HomePage):
     def click_exit_button(self):
         WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(LocatorsProfile.LOGOUT))
         return self.find_element_located(LocatorsProfile.LOGOUT).click()
+
 

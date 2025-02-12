@@ -1,13 +1,11 @@
 import allure
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
 from pages.base_page import BasePage
 from data.locators import LocatorsPassRecovery
 
 
 class PassRecoveryPage(BasePage):
-
 
     @allure.step("Клик по кнопке показать/скрыть пароль")
     def click_show_hide_pass_button(self):

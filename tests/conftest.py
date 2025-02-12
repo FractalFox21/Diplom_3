@@ -1,8 +1,12 @@
 import pytest
+import requests
 from selenium import webdriver
 
-from data.URLS import URL_LOGIN
+from data.URLS import URL_LOGIN, URL_HOME_PAGE
 from data.constants import TEST_EMAIL, TEST_PASSWORD
+from data.generator import GenerateUsers
+from data.handles import URL_USER
+from data.queries import Queries
 from pages.login_page import LoginPage
 
 
@@ -21,6 +25,17 @@ def authorization(driver, email = TEST_EMAIL, password = TEST_PASSWORD):
     user.input_password(password)
     user.click_login_button()
     return driver
+
+#фикстура для создания и удаления временного пользователя
+@pytest.fixture(scope='function')
+def create_and_delete_user():
+    user = GenerateUsers.generate_fake_user()
+    response = Queries.post_create_user(data=user)
+    token = response.json()['accessToken']
+    yield user , token , response
+    requests.delete(f'{URL_HOME_PAGE}{URL_USER}', headers={'Authorization': f'{token}'})
+
+
 
 
 '''

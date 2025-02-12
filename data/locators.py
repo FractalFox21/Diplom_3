@@ -26,6 +26,22 @@ class LocatorsProfile:
     ORDER_HISTORY_BUTTON = (By.XPATH, '//a[@href="/account/order-history"]')
     LOGOUT = (By.XPATH, ".//button[contains(text(),'Выход')]")
 
+class LocatorsProfileOrder:
+    #номер заказа в итории для проверки в ленте
+    CONTROL_ORDER = (By.XPATH, '//*[contains(@class,"rderHistory_textBox__")]//*[contains(@class,"text_type_digits-default")]')
+    #контрольный элемент для окна деталей заказа
+    POP_UP_ORDER = (By.XPATH, '//*[contains(@class,"Modal_orderBox")]')
+    #количество выполненных за всё время заказов
+    ALL_TIME_ORDERS = (By.XPATH, '//*[contains(text(),"Выполнено за все время")]/..//*[contains(@class,"rderFeed_number__")]')
+    #количество выполненных за сегодня заказов
+    TODAY_ORDERS = (By.XPATH, '//*[contains(text(),"Выполнено за сегодня")]/..//*[contains(@class,"rderFeed_number__")]')
+    #кнопка 'лента заказов'
+    ORDER_LIST = (By.XPATH, '//*[contains(text(),"Лента Заказов")]')
+    #номера всех заказов в ленте
+    ORDERS_IN_LIST = (By.XPATH, '//*[contains(@class, "text text_type_main-medium")]/../..//*[contains(@class, "OrderHistory_textBox__3lgbs")]')
+    #номера всех заказов в работе
+    ORDERS_IN_WORK = (By.XPATH, "//*[text() = 'В работе:']/following::li[@class][6]")
+
 
 
 

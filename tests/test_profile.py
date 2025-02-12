@@ -26,7 +26,7 @@ class TestProfile:
     def test_button_per_office_login_home_page(self, authorization):
         user = ProfilePage(authorization)
         user.click_office_button()
-        user.click_order_history_button()
+        user.click_on_order()
         current_url = user.current_url()
         assert URL_ORDER_HISTORY  == current_url
 
