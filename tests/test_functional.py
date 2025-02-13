@@ -11,7 +11,7 @@ class TestFunctional:
     @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('Тест перехода на страницу конструктора по кнопке «Конструктор».')
     def test_button_constructor_through_order_feeds_home_page(self, driver):
-        user = BasePage(driver)
+        user = HomePage(driver)
         user.go_to_site(URL_ORDER_LIST)
         user.click_constructor_button()
         current_url = user.current_url()
@@ -20,7 +20,7 @@ class TestFunctional:
     @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('Тест перехода на страницу заказов по кнопке «Лента заказов».')
     def test_button_order_list_through_constructor_page_order_list_page(self, driver):
-        user = BasePage(driver)
+        user = HomePage(driver)
         user.go_to_site()
         user.click_order_list_button()
         current_url = user.current_url()

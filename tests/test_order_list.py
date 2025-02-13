@@ -5,7 +5,7 @@ from data.URLS import URL_ORDER_LIST
 from data.constants import ORDER
 from data.locators import LocatorsProfileOrder
 from data.queries import Queries
-from pages.home_page import BasePage
+from pages.home_page import HomePage
 from pages.order_history_page import OrderHistoryPage
 
 
@@ -33,7 +33,7 @@ class TestsOrderHistory:
     @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('Тест при создании нового заказа счётчик "Выполнено за всё время" увеличивается')
     def test_new_order_change_last_order_number(self, driver, create_and_delete_user):
-        user = BasePage(driver)
+        user = HomePage(driver)
         api_user = create_and_delete_user
         user.go_to_site(URL_ORDER_LIST)
         last_number = user.get_text(LocatorsProfileOrder.ALL_TIME_ORDERS)
@@ -44,7 +44,7 @@ class TestsOrderHistory:
     @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('Тест при создании нового заказа счётчик "Выполнено за сегодня" увеличивается')
     def test_new_order_change_today_orders(self, driver, create_and_delete_user):
-        user = BasePage(driver)
+        user = HomePage(driver)
         api_user = create_and_delete_user
         user.go_to_site(URL_ORDER_LIST)
         last_number = user.get_text(LocatorsProfileOrder.TODAY_ORDERS)

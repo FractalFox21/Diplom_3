@@ -1,7 +1,7 @@
 import allure
 import pytest
 
-from pages.home_page import BasePage
+from pages.home_page import HomePage
 from data.URLS import URL_LOGIN, URL_PROFILE, URL_ORDER_HISTORY
 from pages.profile_page import ProfilePage
 
@@ -11,7 +11,7 @@ class TestProfile:
     @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('Тест перехода на страницу авторизации по кнопке «Личный кабинет».')
     def test_button_per_office_login_page(self, driver):
-        login = BasePage(driver)
+        login = HomePage(driver)
         login.go_to_site()
         login.click_office_button()
         current_url = login.current_url()
@@ -20,7 +20,7 @@ class TestProfile:
     @pytest.mark.parametrize("driver", ("chrome", "firefox"), indirect=True)
     @allure.title('Тест перехода на страницу профиля по кнопке «Личный кабинет», авторизованный  пользователь.')
     def test_button_per_office_login_open_profile_page(self, authorization):
-        login = BasePage(authorization)
+        login = HomePage(authorization)
         login.click_office_button()
         current_url = login.current_url()
         assert URL_PROFILE  == current_url
